@@ -27,8 +27,8 @@ class Month:
         debit_df = self.transactions_df['amount'].where(self.transactions_df['amount'] < 0)
         self.total_debit = round(debit_df.sum(axis=0), 2)
         self.net_gain = round(self.total_credit + self.total_debit, 2)
-        self.category_transactions = self.transactions_df.sort_values(by=['category', 'amount']).round({'amount': 2})
-        self.price_sort = self.transactions_df.sort_values(by=['amount']).round({'amount': 2})
+        self.category_transactions = self.transactions_df.sort_values(by=['category', 'amount'])
+        self.price_sort = self.transactions_df.sort_values(by=['amount'])
 
 class Year:
 
@@ -40,4 +40,6 @@ class Year:
         self.total_debit = round(debit_df.sum(axis=0), 2)
         self.net_gain = round(self.total_credit + self.total_debit, 2)
         self.category_transactions = self.budgetData.sort_values(by=['category', 'amount'])
-        self.price_sort = self.budgetData.sort_values(by=['amount']).round({'amount': 2})
+        self.price_sort = self.budgetData.sort_values(by=['amount'])
+
+m = Month('05', '2022')

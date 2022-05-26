@@ -26,6 +26,13 @@ st.set_page_config(
 st.title("Financial Budget")
 
 
+def highlight(num):
+    if num < -20:
+        return 'color: tomato'
+    elif num > 40:
+        return 'color: limegreen'
+    else:
+        return 'color: white'
 
 with st.sidebar:
     st.title("Select A Budget Period")
@@ -36,21 +43,20 @@ if select == 'Yearly':
         year = st.selectbox("Choose a year", ("2022", "2023"))
     y = Year(year)
     st.subheader("Total Transactions for " + year)
-    st.dataframe(y.budgetData, 800, 10000)
+    st.dataframe(y.budgetData.style.format({'amount': '{:.2f}'}).applymap(highlight, 'amount'), 800, 10000)
     st.subheader(year + ' ' + "Transactions Sorted by Category")
-    st.dataframe(y.category_transactions, 800, 10000)
+    st.dataframe(y.category_transactions.style.format({'amount': '{:.2f}'}).applymap(highlight, 'amount'), 800, 10000)
     st.subheader(year + ' ' + "Transactions Sorted by Price")
-    st.dataframe(y.price_sort, 800, 10000)
+    st.dataframe(y.price_sort.style.format({'amount': '{:.2f}'}).applymap(highlight, 'amount'), 800, 10000)
 elif select == 'Monthly':
     with st.sidebar:
         month = st.selectbox("Choose a mnoth", ("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"))
         year = st.selectbox("Choose a year", ("2022", "2023"))
     m = Month(month_dict[month], year)
     st.subheader("Total Transactions for " + month + " " + year)
-    st.dataframe(m.transactions_df, 800, 10000)
+    st.dataframe(m.transactions_df.style.format({'amount': '{:.2f}'}).applymap(highlight, 'amount'), 800, 10000)
     st.subheader(month + " " + year + ' ' + "Transactions Sorted by Category")
-    st.dataframe(m.category_transactions, 800, 10000)
+    st.dataframe(m.category_transactions.style.format({'amount': '{:.2f}'}).applymap(highlight, 'amount'), 800, 10000)
     st.subheader(month + " " + year + ' ' + "Transactions Sorted by Price")
-    st.dataframe(m.price_sort, 800, 10000)
-
+    st.dataframe(m.price_sort.style.format({'amount': '{:.2f}'}).applymap(highlight, 'amount'), 800, 10000)
 
