@@ -28,9 +28,9 @@ st.title("Financial Budget")
 
 def highlight(num):
     if num < -20:
-        return 'color: tomato'
+        return 'color: #F04426'
     elif num > 40:
-        return 'color: limegreen'
+        return 'color: lightgreen'
     else:
         return 'color: white'
 
