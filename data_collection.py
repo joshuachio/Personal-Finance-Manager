@@ -68,5 +68,3 @@ class Get:
             col_idx = tr_df.columns.get_loc(column)
             writer.sheets[str(year)].set_column(col_idx, col_idx, column_width)
         writer.save()
-
-Get(2021)
