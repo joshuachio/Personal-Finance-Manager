@@ -1,6 +1,7 @@
 import pandas as pd
 import datetime as dt
 import numpy as np
+from pyparsing import col
 
 class Month:
 
@@ -42,4 +43,9 @@ class Year:
         self.category_transactions = self.budgetData.sort_values(by=['category', 'amount'])
         self.price_sort = self.budgetData.sort_values(by=['amount'])
 
-m = Month('05', '2022')
+# chart_data = pd.DataFrame(
+#      [1, 2, 3],
+#      columns=["a", "b", "c"])
+c = pd.DataFrame([1, 2, 3], index=['first', 'second', 'third'], columns=['Total ($)'])
+# print(chart_data)
+print(c)
