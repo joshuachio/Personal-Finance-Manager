@@ -31,14 +31,15 @@ class Month:
         self.category_transactions = self.transactions_df.sort_values(by=['category', 'amount'])
         self.price_sort = self.transactions_df.sort_values(by=['amount'])
         self.categories = dict()
+        self.amount = self.transactions_df['amount'].reset_index(drop=True)
         for i, v in enumerate(self.transactions_df['category']):
             try:
-                if int(self.transactions_df['amount'][i]) > 0:
+                if int(self.amount[i]) > 0:
                     continue
                 if v in self.categories:
-                    self.categories[v] -= self.transactions_df['amount'][i]
+                    self.categories[v] -= self.amount[i]
                 else:
-                    self.categories[v] = -self.transactions_df['amount'][i]
+                    self.categories[v] = -self.amount[i]
             except:
                 continue
 
@@ -65,8 +66,12 @@ class Year:
             except:
                 continue
 
-# m = Month('03', '2022')
+# m = Month('02', '2022')
 # # print(23)
 # y = Month('05', '2022')
 # y = Month('04', '2022')
-# # print(m.transactions_df)
+# may = Month('05', '2022')
+# # print(m.transactions_df['category'])
+# print(may.amount)
+# print(m.amount[0])
+# print(m.categories)
