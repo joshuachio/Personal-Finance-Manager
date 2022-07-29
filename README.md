@@ -1,3 +1,3 @@
-# Personal Finance Dashboard
+# Personal Finance Manager
 
-Uses Mint API to pull financial data
+A script written to analyze personal financial transactions in order to create a personalized budget. Personal transactional data is pulled using Mint credentials and digested using Pandas. Transactions are broken down into categories based on activity, then sorted by time frame. The final budget is displayed through Streamlit, allowing users to choose between months and years. 
